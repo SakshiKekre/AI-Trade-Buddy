@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "My API",
+      "version": "1.0.0",
+      "description": "This is a sample API for demonstration purposes."
+    },
+    "paths": {
+      "/get_userinfo": {
+        "get": {
+          "summary": "Get all users",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
