@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Switch directly
 import './App.css';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import TradePage from './pages/ChatPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div className="App">
+          <header>
+            {/* You can include any header content here */}
+          </header>
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/chat" element={<TradePage />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
     </div>
   );
 }
