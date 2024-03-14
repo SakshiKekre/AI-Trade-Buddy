@@ -31,51 +31,88 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <h1>User Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formValues.firstName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formValues.lastName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formValues.email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Trading API:</label>
-          <input
-            type="text"
-            id="tradeAPI"
-            name="tradeAPI"
-            value={formValues.tradeAPI}
-            onChange={handleInputChange}
-          />
-        </div>
-        {/* Add more fields as needed */}
-        <button type="submit">Save Changes</button>
-      </form>
+      <div class="profile-container">
+        <h1>User Profile</h1>
+        <h2>Identification Information</h2>
+        <form onSubmit={handleSubmit} class="profile-info form-container">
+          <div class="form-field">
+            <label htmlFor="firstName">First Name:</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formValues.firstName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class="form-field">
+            <label htmlFor="lastName">Last Name:</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formValues.lastName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class="form-field">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formValues.email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class="form-field">
+            <label htmlFor="email">Trading API:</label>
+            <input
+              type="text"
+              id="tradeAPI"
+              name="tradeAPI"
+              value={formValues.tradeAPI}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <br/>
+          <h2>Trade Preferences</h2>
+
+          <div class="form-field">
+            <label htmlFor="firstName">Indicator 1:</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              // value={formValues.firstName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class="form-field">
+            <label htmlFor="lastName">Indicator 2:</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              // value={formValues.lastName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div class="form-field">
+            <label htmlFor="email">Indicator 3:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              // value={formValues.email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <br/>
+          <button class="profile-button" type="submit">Save Changes</button>
+        </form>
+      </div>
     </div>
   );
 };
