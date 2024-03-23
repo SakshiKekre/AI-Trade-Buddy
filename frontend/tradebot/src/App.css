@@ -38,6 +38,141 @@
 }
 
 
+:root {
+  --light: #f6f6f9;
+  --primary: #1976d2;
+  --light-primary:#cfe8ff;
+  --grey: #eee;
+  --dark-grey: #aaaaaa;
+  --dark: #363949;
+  --danger: #d32f2f;
+  --light-danger: #fecdd3;
+  --warning: #fbce2d;
+  --light-warning: #fff2c6;
+  --success: #388e3c;
+  --light-success: | #bbf7d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Other styles */
+}
+
+body{
+  font-family: 'poppins', serif;
+}
+
+.bx{
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+li{
+  list-style-type: none;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 300px; 
+  height: 100%; 
+  background-color: var(--light);
+  padding: 20px 10px;
+  z-index: 2;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  box-shadow: 03px 0 10px var(--grey);
+}
+
+.sidebar .side-menu {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.sidebar .side-menu li {
+  margin: 0.5rem ;
+  height: 3rem;
+  background-color: transparent;
+}
+
+.sidebar .side-menu li.active {
+  border-left: var(--success) 6px solid;
+  background: var(--dark);
+  transition: all 0.3s ease-in;
+}
+
+.sidebar .side-menu li a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  color: var(--dark);
+}
+
+.sidebar .side-menu li.active a {
+  color: var(--success);
+}
+
+.sidebar.close .side-menu li a {
+  width: calc(80px - 12px);
+  transition: all 0.3s ease-in;
+}
+
+.sidebar .side-menu li a .bx {
+  min-width: calc(80px - 40px);
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 70%;
+  transform: translate(-50%, -50%); 
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 600px;
+  transform: translate(-50%, -50%); 
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -59,7 +194,10 @@
 }
 
 .profile-container {
-  max-width: 600px;
+  top: 20%;
+  left: 30%;
+  position: absolute;
+  width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f0f0f0;
@@ -163,6 +301,7 @@
 
 /* Dashboard.css */
 .dashboard {
+  width: 75%;
   margin-bottom: 20px;
   padding: 20px;
   background-color: #f0f0f0;
@@ -186,6 +325,7 @@
 /* TradeHistoryTable.css */
 .trade-history {
   padding: 20px;
+  width: 95%;
   background-color: #f0f0f0;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

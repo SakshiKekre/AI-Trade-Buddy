@@ -18,8 +18,8 @@ const Dashboard = ({ data }) => {
         <div>${data.averageReturnPerTrade}</div>
       </div>
       <div className="metric">
-        <div>Total Trades (Quantity)</div>
-        <div>{data.totalTrades}</div>
+        <div>Total Trades</div>
+        <div>{data.totalTrades}</div> 
       </div>
     </div>
   );

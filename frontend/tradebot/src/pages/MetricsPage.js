@@ -2,7 +2,7 @@
 import React from 'react';
 import Dashboard from './Dashboard';
 import TradeHistoryTable from './TradeHistory';
-
+import Sidebar from '../components/Sidebar';
 
   // Sample data for demonstration
   const dashboardData = {
@@ -13,18 +13,23 @@ import TradeHistoryTable from './TradeHistory';
   };
 
   const tradeHistoryData = [
-    { id: 1, date: '2024-03-10', symbol: 'AAPL', entryPrice: 150, exitPrice: 160, profitLoss: 100 },
-    { id: 2, date: '2024-03-11', symbol: 'GOOG', entryPrice: 2500, exitPrice: 2600, profitLoss: 150 },
+    { id: 1, pdate: '2024-03-10', sdate: '2024-03-15', symbol: 'AAPL', quantity: '1', entryPrice: 150, exitPrice: 160, profitLoss: 10 },
+    { id: 2, pdate: '2024-03-10', sdate: '2024-03-15', symbol: 'GOOG', quantity: '5', entryPrice: 2500, exitPrice: 2600, profitLoss: 100 },
     // Add more trade history data as needed
   ];
 
 // const MetricsPage = ({ dashboardData, tradeHistoryData }) => {       // uncomment when backend is integrated to get data
 const MetricsPage = () => {
   return (
-    <div className="metrics-page">
-      <Dashboard data={dashboardData} />
-      <TradeHistoryTable data={tradeHistoryData} />
-    </div>
+    <React.Fragment>
+      <div className='sidebar'>
+        <Sidebar></Sidebar>
+      </div>
+      <div className="container">
+        <Dashboard data={dashboardData} />
+        <TradeHistoryTable data={tradeHistoryData} />
+      </div>
+    </React.Fragment>
   );
 };
 

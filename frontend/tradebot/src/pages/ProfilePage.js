@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import Sidebar from '../components/Sidebar';
 
 const ProfilePage = () => {
   // Placeholder user data
@@ -31,6 +32,9 @@ const ProfilePage = () => {
 
   return (
     <div>
+      <div>
+      <Sidebar></Sidebar>
+      </div>
       <div class="profile-container">
         <h1>User Profile</h1>
         <h2>Identification Information</h2>
@@ -75,12 +79,22 @@ const ProfilePage = () => {
               onChange={handleInputChange}
             />
           </div>
+          <div class="form-field">
+            <label htmlFor="email">Secret Key:</label>
+            <input
+              type="password"
+              id="tradeAPI"
+              name="tradeAPI"
+              value={formValues.tradeAPI}
+              onChange={handleInputChange}
+            />
+          </div>
 
           <br/>
           <h2>Trade Preferences</h2>
 
           <div class="form-field">
-            <label htmlFor="firstName">Indicator 1:</label>
+            <label htmlFor="firstName">Risk Level:</label>
             <input
               type="text"
               id="firstName"
@@ -90,16 +104,16 @@ const ProfilePage = () => {
             />
           </div>
           <div class="form-field">
-            <label htmlFor="lastName">Indicator 2:</label>
+            <label htmlFor="lastName">Market Cap:</label>
             <input
-              type="text"
+              type="select"
               id="lastName"
               name="lastName"
               // value={formValues.lastName}
               onChange={handleInputChange}
             />
           </div>
-          <div class="form-field">
+          {/* <div class="form-field">
             <label htmlFor="email">Indicator 3:</label>
             <input
               type="email"
@@ -108,7 +122,7 @@ const ProfilePage = () => {
               // value={formValues.email}
               onChange={handleInputChange}
             />
-          </div>
+          </div> */}
           <br/>
           <button class="profile-button" type="submit">Save Changes</button>
         </form>

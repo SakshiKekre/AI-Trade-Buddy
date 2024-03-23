@@ -8,8 +8,10 @@ const TradeHistory = ({ data }) => {
       <table>
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Purchase Date</th>
+            <th>Sell Date</th>
             <th>Symbol</th>
+            <th>Quantity</th>
             <th>Entry Price</th>
             <th>Exit Price</th>
             <th>Profit/Loss</th>
@@ -18,8 +20,10 @@ const TradeHistory = ({ data }) => {
         <tbody>
           {data.map((trade) => (
             <tr key={trade.id}>
-              <td>{trade.date}</td>
+              <td>{trade.pdate}</td>
+              <td>{trade.sdate}</td>
               <td>{trade.symbol}</td>
+              <td>{trade.quantity}</td>
               <td>${trade.entryPrice}</td>
               <td>${trade.exitPrice}</td>
               <td>${trade.profitLoss}</td>
