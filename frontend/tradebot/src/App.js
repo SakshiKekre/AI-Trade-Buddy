@@ -5,26 +5,25 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import TradePage from './pages/ChatPage';
 import MetricsPage from './pages/MetricsPage';
+import TradePlatformPage from './pages/TradePlatformPage';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <div className="App">
-          <header>
-            {/* You can include any header content here */}
-          </header>
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/chat" element={<TradePage />} />
-              <Route path="/metrics" element={<MetricsPage />} />
-            </Routes>
-          </main>
-        </div>
-      </Router>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/chat" element={<TradePage />} />
+            <Route path="/metrics" element={<MetricsPage />} />
+            <Route path="/trade" element={<TradePlatformPage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

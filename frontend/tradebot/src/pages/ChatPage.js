@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Sidebar from '../components/Sidebar';
+
 
 function ChatPage() {
   const [message, setMessage] = useState('');
@@ -28,26 +30,53 @@ function ChatPage() {
     }
   };
 
-  return (
-    <div className="chat-container">
-      <div className="chat-history">
-        {chatHistory.map((chat, index) => (
-          <div key={index} className={`chat-message ${chat.sender}`}>
-            {chat.message}
-          </div>
-        ))}
+
+  // const ChatPage = () => {
+    return (
+    <div className="background container">
+
+      <div className="sidebar">
+        <Sidebar></Sidebar>
       </div>
-      <div className="input-container">
-        <input
-          type="text"
-          placeholder="Type your message..."
-          value={message}
-          onChange={handleMessageChange}
-        />
-        <button onClick={sendMessage}>Send</button>
+      <div className='main'>
+        <div className="chat-container">
+          {/* <h1>Embedded Chat Page</h1> */}
+          <iframe
+            title="Chat Page"
+            src="https://6a58096011c646e81b.gradio.live/"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+          ></iframe>
+        </div>
       </div>
     </div>
-  );
+    );
+  // };
+
+  // return (
+  //   <div className="chat-container">
+  //     <div className="chat-history">
+  //       {chatHistory.map((chat, index) => (
+  //         <div key={index} className={`chat-message ${chat.sender}`}>
+  //           {chat.message}
+  //         </div>
+  //       ))}
+  //     </div>
+  //     <div className="input-container">
+  //       <input
+  //         type="text"
+  //         placeholder="Type your message..."
+  //         value={message}
+  //         onChange={handleMessageChange}
+  //       />
+  //       <button onClick={sendMessage}>Send</button>
+  //     </div>
+  //   </div>
+  // );
+
+
 }
 
 export default ChatPage;
+

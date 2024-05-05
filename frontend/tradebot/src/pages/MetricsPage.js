@@ -21,15 +21,17 @@ import Sidebar from '../components/Sidebar';
 // const MetricsPage = ({ dashboardData, tradeHistoryData }) => {       // uncomment when backend is integrated to get data
 const MetricsPage = () => {
   return (
-    <React.Fragment>
+    <div className='background container'>
       <div className='sidebar'>
         <Sidebar></Sidebar>
       </div>
-      <div className="container">
-        <Dashboard data={dashboardData} />
-        <TradeHistoryTable data={tradeHistoryData} />
+      <div className='main'>
+        <div className="content-container">
+          <Dashboard data={dashboardData} />
+          <TradeHistoryTable data={tradeHistoryData} />
+        </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
