@@ -5,11 +5,13 @@ import axios from 'axios';
 const ProfilePage = () => {
   // Placeholder user data
   const [userData, setUserData] = useState({
-    name: null,
+    first_name: null,
     user_api: null,
     user_risk_cap: null,
     user_market_cap: null,
     username: null,
+    email: null,
+
     // Add more fields as needed
   });
 
@@ -19,7 +21,9 @@ const ProfilePage = () => {
   // Function to fetch user info from the server
   const getUserInfo = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/get_userinfo');
+      // const response = await axios.get('http://127.0.0.1:5000/get_userinfo');
+      const response = await axios.get('http://127.0.0.1:5000/api/all_user_profiles');
+      
       const responseData = response.data[0];
 
       console.log("data:", responseData);
@@ -86,7 +90,7 @@ const ProfilePage = () => {
                 type="text"
                 id="firstName"
                 name="name"
-                value={formValues.name}
+                value={formValues.first_name}
                 onChange={handleInputChange}
               />
             </div>
@@ -106,7 +110,7 @@ const ProfilePage = () => {
                 type="email"
                 id="email"
                 name="username"
-                value={formValues.username}
+                value={formValues.email}
                 onChange={handleInputChange}
               />
             </div>

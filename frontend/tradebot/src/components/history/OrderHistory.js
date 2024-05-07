@@ -1,10 +1,10 @@
-// TradeHistoryTable.js
+// OrderHistory.js
 import React from 'react';
 
-const TradeHistory = ({ data }) => {
+const OrderHistory = ({ data }) => {
   return (
     <div className="trade-history">
-      <h2>Trade History</h2>
+      <h2>Order History</h2>
       <table>
         <thead>
           <tr>
@@ -35,4 +35,4 @@ const TradeHistory = ({ data }) => {
   );
 };
 
-export default TradeHistory;
+export default OrderHistory;

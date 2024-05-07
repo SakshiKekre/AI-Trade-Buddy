@@ -218,6 +218,18 @@ li{
   flex: 1; /* Allow fields to expand to fill available space */
 }
 
+.stock-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px; /* Adjust the gap between fields */
+  flex-wrap: wrap;
+  justify-content: center;
+  border-color: #acacd9;
+  border-style: solid;
+  padding: 5%;
+}
+
+
 .profile-container {
   /* top: 20%;
   left: 30%;

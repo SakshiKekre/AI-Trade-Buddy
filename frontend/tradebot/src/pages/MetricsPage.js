@@ -1,8 +1,12 @@
 // MetricsPage.js
-import React from 'react';
-import Dashboard from './Dashboard';
-import TradeHistoryTable from './TradeHistory';
+import React, { useState, useEffect } from 'react';
+
+import Dashboard from '../components/dashboard/Dashboard';
+import OrderHistory from '../components/history/OrderHistory';
 import Sidebar from '../components/Sidebar';
+import DashboardMain from '../components/DashboardMain';
+import PositionHistory from '../components/history/PositionHistory';
+import { getAlpacaPositions } from '../api/GetPositions'
 
   // Sample data for demonstration
   const dashboardData = {
@@ -18,8 +22,37 @@ import Sidebar from '../components/Sidebar';
     // Add more trade history data as needed
   ];
 
-// const MetricsPage = ({ dashboardData, tradeHistoryData }) => {       // uncomment when backend is integrated to get data
+
 const MetricsPage = () => {
+
+
+  const [orderHistory, setOrderHistory] = useState([]);
+  const [positionHistory, setPositionHistory] = useState([]);
+
+    // fetch active positions
+    const fetchPositionHistory = async () => {
+      try {
+        // Call the update stocks API with formValues
+        const response = await getAlpacaPositions();
+        setPositionHistory(response);
+      } catch (error) {
+        console.error('Error fetching positions:', error);
+      }
+    };
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const orderHistoryData = await fetchPositionHistory();
+              setOrderHistory(orderHistoryData);
+          } catch (error) {
+              console.error('Error fetching positions history:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
+
   return (
     <div className='background container'>
       <div className='sidebar'>
@@ -27,11 +60,20 @@ const MetricsPage = () => {
       </div>
       <div className='main'>
         <div className="content-container">
-          <Dashboard data={dashboardData} />
-          <TradeHistoryTable data={tradeHistoryData} />
+          {/* <Dashboard data={dashboardData} /> */}
+          {/* <OrderHistory data={tradeHistoryData} /> */}
+          <PositionHistory data={positionHistory} />
         </div>
       </div>
     </div>
+    // <div>
+    //     <div>
+    //       {/* <Sidebar></Sidebar> */}
+    //     </div>
+    //     <div>
+    //       <DashboardMain></DashboardMain>
+    //     </div>
+    // </div>
   );
 };
 
