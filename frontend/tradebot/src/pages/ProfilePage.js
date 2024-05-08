@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
+import { getAllUsers } from '../api/GetUsers';
 import axios from 'axios';
+
 
 const ProfilePage = () => {
   // Placeholder user data
@@ -18,18 +20,10 @@ const ProfilePage = () => {
   // State for form inputs
   const [formValues, setFormValues] = useState(userData);
 
-  // Function to fetch user info from the server
   const getUserInfo = async () => {
     try {
-      // const response = await axios.get('http://127.0.0.1:5000/get_userinfo');
-      const response = await axios.get('http://127.0.0.1:5000/api/all_user_profiles');
-      
-      const responseData = response.data[0];
 
-      console.log("data:", responseData);
-      // Update user data and form values with fetched data
-      setUserData(responseData);
-      setFormValues(responseData);
+      setUserData(getAllUsers);
     } catch (error) {
       console.error('Error fetching user info:', error);
     }

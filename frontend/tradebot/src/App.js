@@ -4,7 +4,7 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import TradePage from './pages/ChatPage';
-import MetricsPage from './pages/MetricsPage';
+import MetricsPage from './pages/TabbedHistory';
 import TradePlatformPage from './pages/TradePlatformPage';
 
 function App() {

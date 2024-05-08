@@ -23,7 +23,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 app.secret_key = "super secret key"
 
 # PostgreSQL Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:Admin1234@database-1.c7sweeci81lq.us-east-1.rds.amazonaws.com:3306/final_project'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)

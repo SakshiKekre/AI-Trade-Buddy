@@ -4,29 +4,32 @@ import React from 'react';
 const OrderHistory = ({ data }) => {
   return (
     <div className="trade-history">
-      <h2>Order History</h2>
       <table>
         <thead>
           <tr>
-            <th>Purchase Date</th>
-            <th>Sell Date</th>
+            <th>Trade ID</th>
+            <th>User ID</th>
+            <th>Platform ID</th>
             <th>Symbol</th>
+            <th>Trade Type</th>
+            <th>Price</th>
             <th>Quantity</th>
-            <th>Entry Price</th>
-            <th>Exit Price</th>
-            <th>Profit/Loss</th>
+            <th>Total Value</th>
+            <th>Trade Date</th>
           </tr>
         </thead>
         <tbody>
           {data.map((trade) => (
-            <tr key={trade.id}>
-              <td>{trade.pdate}</td>
-              <td>{trade.sdate}</td>
+            <tr key={trade.trade_id}>
+              <td>{trade.trade_id}</td>
+              <td>{trade.user_id}</td>
+              <td>{trade.platform_id}</td>
               <td>{trade.symbol}</td>
+              <td>{trade.trade_type}</td>
+              <td>${trade.price}</td>
               <td>{trade.quantity}</td>
-              <td>${trade.entryPrice}</td>
-              <td>${trade.exitPrice}</td>
-              <td>${trade.profitLoss}</td>
+              <td>{trade.total_value ? `$${trade.total_value}` : 'N/A'}</td>
+              <td>{trade.trade_date ? new Date(trade.trade_date).toLocaleDateString() : 'N/A'}</td>
             </tr>
           ))}
         </tbody>

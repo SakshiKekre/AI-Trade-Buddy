@@ -20,7 +20,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <a href="/metrics" >
-                        <i class="bx bx-bar-chart">Metrics</i>
+                        <i class="bx bx-bar-chart">View Portfolio</i>
                     </a>
                 </li>
                 <li>
@@ -30,7 +30,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <a href="/trade" >
-                        <i class="bx bx-cog">Trading Platform</i>
+                        <i class="bx bx-cog">Trade Recommendations</i>
                     </a>
                 </li>
             </ul>
