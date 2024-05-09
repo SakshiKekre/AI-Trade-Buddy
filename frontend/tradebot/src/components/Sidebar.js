@@ -1,42 +1,42 @@
 import React from "react";
-
-
+import './Sidebar.css'; // Assuming your CSS file is named Sidebar.css
 
 const Sidebar = () => {
-
-
     return(
         <div className="sidebar">
             <a href="/" className="logo">
-                <img src="" alt=""/>
-                <span> Trade Buddy </span>
+                {/* Assume a placeholder logo image */}
+                <img src="/trade-buddy-logo1.webp" alt="Trade Buddy Logo"/>
             </a>
 
             <ul className="side-menu">
                 <li>
-                    <a href="/profile" >
-                        <i class="bx bx-user">User Profile</i>
+                    <a href="/profile">
+                        <i className="bx bx-user"></i>
+                        User Profile
                     </a>
                 </li>
                 <li>
-                    <a href="/metrics" >
-                        <i class="bx bx-bar-chart">View Portfolio</i>
+                    <a href="/metrics">
+                        <i className="bx bx-bar-chart"></i>
+                        View Portfolio
                     </a>
                 </li>
                 <li>
-                    <a href="/chat" >
-                        <i class="bx bxs-dashboard">Ask Trade-Bot</i>
+                    <a href="/chat">
+                        <i className="bx bxs-dashboard"></i>
+                        Ask Trade-Bot
                     </a>
                 </li>
                 <li>
-                    <a href="/trade" >
-                        <i class="bx bx-cog">Trade Recommendations</i>
+                    <a href="/trade">
+                        <i className="bx bx-cog"></i>
+                        Trade Recommendations
                     </a>
                 </li>
             </ul>
         </div>
-
     );
 };
 
-export default Sidebar
+export default Sidebar;
