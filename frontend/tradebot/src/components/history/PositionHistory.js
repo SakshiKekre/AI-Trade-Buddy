@@ -10,26 +10,31 @@ const PositionHistory = ({ data }) => {
             <th>Symbol</th>
             <th>Quantity</th>
             <th>Quantity Available</th>
-            <th>Average Entry Price</th>
+            <th>Avg. Entry Price</th>
             <th>Current Price</th>
-            {/* <th>Exchange</th> */}
+            <th>Profit/Loss</th> {/* Added Profit/Loss column header */}
             <th>Market Value</th>
             {/* <th>Side</th> */}
           </tr>
         </thead>
         <tbody>
-          {data.map((position) => (
-            <tr key={position.asset_id}>
-              <td>{position.symbol}</td>
-              <td>{position.qty}</td>
-              <td>{position.qty_available}</td>
-              <td>{position.avg_entry_price}</td>
-              <td>{position.current_price}</td>
-              {/* <td>{position.exchange}</td> */}
-              <td>{position.market_value}</td>
-              {/* <td>{position.side}</td> */}
-            </tr>
-          ))}
+          {data.map((position) => {
+            // Calculate Profit/Loss
+            const profitLoss = (position.current_price - position.avg_entry_price) * position.qty_available;
+            
+            return (
+              <tr key={position.asset_id}>
+                <td>{position.symbol}</td>
+                <td>{position.qty}</td>
+                <td>{position.qty_available}</td>
+                <td>{parseFloat(position.avg_entry_price).toFixed(2)}</td> {/* Rounded to two decimal places */}
+                <td>{parseFloat(position.current_price).toFixed(2)}</td> {/* Rounded to two decimal places */}
+                <td>{profitLoss.toFixed(2)}</td> {/* Display Profit/Loss rounded to two decimal places */}
+                <td>{parseFloat(position.market_value).toFixed(2)}</td> {/* Assuming market value should also be rounded */}
+
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

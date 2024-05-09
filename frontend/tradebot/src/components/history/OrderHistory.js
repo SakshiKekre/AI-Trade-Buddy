@@ -7,11 +7,9 @@ const OrderHistory = ({ data }) => {
       <table>
         <thead>
           <tr>
-            <th>Trade ID</th>
-            <th>User ID</th>
-            <th>Platform ID</th>
-            <th>Symbol</th>
+            <th>Trade Platform </th>
             <th>Trade Type</th>
+            <th>Symbol</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Total Value</th>
@@ -21,11 +19,9 @@ const OrderHistory = ({ data }) => {
         <tbody>
           {data.map((trade) => (
             <tr key={trade.trade_id}>
-              <td>{trade.trade_id}</td>
-              <td>{trade.user_id}</td>
-              <td>{trade.platform_id}</td>
+              <td>Alpaca</td>
+              <td>{trade.trade_type.toUpperCase()}</td>
               <td>{trade.symbol}</td>
-              <td>{trade.trade_type}</td>
               <td>${trade.price}</td>
               <td>{trade.quantity}</td>
               <td>{trade.total_value ? `$${trade.total_value}` : 'N/A'}</td>

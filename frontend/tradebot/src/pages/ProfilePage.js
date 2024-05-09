@@ -97,8 +97,9 @@ const handleInputChange = (e) => {
 
       <div className="main">
         <div className="profile-container">
-          <h2>Identification Information</h2>
+        
           <form onSubmit={handleSubmit} className="profile-info form-container">
+          <h1>User Profile Details</h1>
             <div className="form-field">
               <label htmlFor="firstName">First Name</label>
               <input

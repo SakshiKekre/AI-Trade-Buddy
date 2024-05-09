@@ -74,8 +74,8 @@ const TwoTabsPage = () => {
       </div>
       <div className='profile-container'>
         <Tabs value={tabValue} onChange={handleChange} aria-label="tabs">
-          <Tab label="Positions" />
-          <Tab label="All Trade Activities" />
+          <Tab label="Current Positions" />
+          <Tab label="Trade Activities History" />
         </Tabs>
         <TabPanel value={tabValue} index={0}>
           <PositionHistory data={positionHistory} />
