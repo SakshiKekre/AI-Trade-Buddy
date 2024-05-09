@@ -29,6 +29,7 @@
     width: 100%;
     list-style: none;
     padding: 0;
+    font-size: 30px;
 }
 
 .side-menu li a {
@@ -45,7 +46,7 @@
 }
 
 .bx {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
     margin-right: 10px;
 }

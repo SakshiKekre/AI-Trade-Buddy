@@ -34,6 +34,12 @@ const Sidebar = () => {
                         Trade Recommendations
                     </a>
                 </li>
+                <li>
+                    <a href="/trade">
+                        <i className="bx bxs-hot"></i>
+                        Rebalance Portfolio 
+                    </a>
+                </li>
             </ul>
         </div>
     );
