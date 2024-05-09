@@ -6,10 +6,10 @@ import { updateStocksAPI } from '../api/UpdateStocks.js';
 const TradePlatformPage = () => {
   // Placeholder user data
   const [userData, setUserData] = useState({
-    index: 'DOW',
-    platform: 'Alpaca',
-    risk: 'Low',
-    perc_alloc: '50%',
+    sector: null,
+    // platform: 'Alpaca',
+    risk_category: null,
+    // perc_alloc: '50%',
     // Add more fields as needed
     newField: [], // New field for multi-select checkbox list
   });
@@ -44,8 +44,8 @@ const TradePlatformPage = () => {
       const response = await updateStocksAPI(formValues);
       // Extract the stock options from the response data
       const stocks = response.map(stock => ({
-        label: stock.CompanyName,
-        value: stock.StockTicker
+        label: stock.company_name,
+        value: stock.ticker
       }));
       // Update the stockOptions based on the extracted stock options
       setStockOptions(stocks);
@@ -103,7 +103,7 @@ const TradePlatformPage = () => {
 
       <div className='main'>
         <div className="profile-container">
-          <h1>Stock Recommendations for invetment</h1>
+          <h1>Stock Recommendations for investment</h1>
           <form onSubmit={handleUpdateStocks} className="profile-info form-container">
             <br/>
             <h2>Select Sector & Risk Level</h2>
@@ -116,7 +116,7 @@ const TradePlatformPage = () => {
                   <select
                     id="sector"
                     name="sector"
-                    value={formValues.sectot}
+                    // value={formValues.sector}
                     onChange={handleInputChange}
                   >
                     <option value="Technology">Technology</option>
@@ -135,7 +135,7 @@ const TradePlatformPage = () => {
                     <select
                       id="riskLevel"
                       name="riskLevel"
-                      value={formValues.riskLevel}
+                      // value={formValues.riskLevel}
                       onChange={handleInputChange}
                     >
                       <option value="0">Low</option>
@@ -144,7 +144,7 @@ const TradePlatformPage = () => {
                     </select>
                 </div>
                 <div className="form-field">
-                  <button className="profile-button" type="submit">Submit</button>
+                  <button className="profile-button" type="submit">Get Recommendations</button>
                 </div>
             </div>
           </form>
@@ -166,7 +166,7 @@ const TradePlatformPage = () => {
               ))}
             </div>
             <br/>
-            <button className="profile-button" type="submit">Perform Trade</button>
+            <button className="profile-button" type="submit">Create Order</button>
           </form>
         </div>
       </div>
