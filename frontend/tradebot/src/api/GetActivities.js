@@ -16,3 +16,5 @@ export const getAllTradeActivities = async () => {
         throw new Error('Error fetching activities');
     }
 };
+
+

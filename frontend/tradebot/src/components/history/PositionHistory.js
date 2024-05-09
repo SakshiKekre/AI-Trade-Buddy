@@ -1,9 +1,25 @@
 // PositionHistory.js
 import React from 'react';
 
-const PositionHistory = ({ data }) => {
+const PositionHistory = ({ data , accountInfo}) => {
   return (
     <div className="trade-history">
+      {/* Displaying account information */}
+      <div className="account-info">
+      <h3>Account Overview</h3>
+      <div className="info-row">
+        <span className="label">Total Cash Available for Trading:</span>
+        <span className="value">${accountInfo.total_cash}</span>
+      </div>
+      <div className="info-row">
+        <span className="label">Total Portfolio Value:</span>
+        <span className="value">${accountInfo.portfolio_value}</span>
+      </div>
+      <div className="info-row">
+        <span className="label">Total Positions Value:</span>
+        <span className="value">${accountInfo.position_market_values}</span>
+      </div>
+    </div>
       <table>
         <thead>
           <tr>

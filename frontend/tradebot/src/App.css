@@ -431,3 +431,37 @@ li{
 .trade-history tbody tr:hover {
   background-color: #e0e0e0;
 }
+
+.account-info {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%; /* Ensures the container takes full width */
+}
+
+.account-info h3 {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.account-info label {
+  font-weight: bold; /* Make the label bold */
+  margin-right: 10px; /* Spacing between label and value */
+  flex-basis: 50%; /* Takes half the width of the container */
+  text-align: right; /* Right aligns the text */
+}
+
+.account-info value {
+  flex-basis: 50%; /* Takes half the width of the container */
+  text-align: left; /* Left aligns the text */
+  padding-left: 20px; /* Adds space between label and value */
+}

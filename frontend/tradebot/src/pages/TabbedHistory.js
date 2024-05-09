@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar';
 import PositionHistory from '../components/history/PositionHistory';
 import OrderHistory from '../components/history/OrderHistory';
 import { getAlpacaPositions } from '../api/GetPositions';
+import { getAlpacaAccountInfo } from '../api/GetPositions';
 import { getAllTradeActivities } from '../api/GetActivities';
 
 const TabPanel = ({ children, value, index, ...other }) => {
@@ -29,6 +30,7 @@ const TwoTabsPage = () => {
   const [tabValue, setTabValue] = useState(0);
   const [positionHistory, setPositionHistory] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+  const [alpacaAccountInfo, setAlpacaAccountInfo] = useState([]);
 
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
@@ -45,11 +47,14 @@ const TwoTabsPage = () => {
   const fetchPositionHistory = async () => {
     try {
       const response = await getAlpacaPositions();
+      const response1 = await getAlpacaAccountInfo();
       setPositionHistory(response);
+      setAlpacaAccountInfo(response1);
     } catch (error) {
       console.error('Error fetching positions:', error);
     }
   };
+
 
   // Fetch all trade activities
   const fetchAllTradeActivities = async () => {
@@ -78,7 +83,7 @@ const TwoTabsPage = () => {
           <Tab label="Trade Activities History" />
         </Tabs>
         <TabPanel value={tabValue} index={0}>
-          <PositionHistory data={positionHistory} />
+          <PositionHistory data={positionHistory} accountInfo={alpacaAccountInfo} />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
           <OrderHistory data={orderHistory} />

@@ -16,3 +16,19 @@ export const getAlpacaPositions = async () => {
         throw new Error('Error fetching positions');
     }
 };
+
+export const getAlpacaAccountInfo = async () => {
+    try {
+        // Make a GET request to the positions
+        const response = await axios.get(`${BASE_URL}/api/account_info`);
+
+        // Return the response data
+        console.log(response.data)
+
+        return response.data;
+    } catch (error) {
+        // Handle any errors that occur during the request
+        console.error('Error fetching account info:', error);
+        throw new Error('Error fetching account info');
+    }
+};
