@@ -198,6 +198,9 @@ li{
 }
 
 
+
+
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -207,15 +210,30 @@ li{
 .form-field {
   display: flex;
   align-items: center; /* Align items vertically */
+  margin: 2px
 }
+
+.form-field {
+  display: flex;       /* Enables flexbox layout */
+  justify-content: center; /* Centers children horizontally */
+  align-items: center; /* Centers children vertically */
+  padding: 2px;       /* Optional padding for aesthetics */
+}
+
 
 .form-field label {
   min-width: 120px; /* Adjust the width of the labels as needed */
+  text-align: right;
+  margin-right: 10px;
 }
+.form-field button {
+  min-width: 120px; /* Adjust the width of the labels as needed */
+}
+
 
 .form-field input,
 .form-field select {
-  flex: 1; /* Allow fields to expand to fill available space */
+  flex:1
 }
 
 .stock-container {
@@ -235,6 +253,7 @@ li{
   left: 30%;
   position: absolute; */
   /* max-width: calc(100% - 300px); */
+  font-family: 'Arial', sans-serif;
   width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -247,10 +266,33 @@ li{
   margin-bottom: 20px;
 }
 
-.profile-info h2 {
-  font-size: 24px;
+.profile-info h1 {
+  font-size: 24x;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  margin-top: 20px;
   margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #bbb; /* Light grey shadow for depth */
 }
+
+
+
+.profile-info h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #bbb; /* Light grey shadow for depth */
+}
+
+
+
+
+
 
 .profile-info p {
   font-size: 16px;

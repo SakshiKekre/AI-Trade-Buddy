@@ -103,64 +103,49 @@ const TradePlatformPage = () => {
 
       <div className='main'>
         <div className="profile-container">
-          <h1>Create Trade Order</h1>
+          <h1>Stock Recommendations for invetment</h1>
           <form onSubmit={handleUpdateStocks} className="profile-info form-container">
             <br/>
-            <h2>Trade Preferences</h2>
+            <h2>Select Sector & Risk Level</h2>
 
             <div id="tradePreferences" className='form-container'>
-            <div className="form-field">
                 <div className="form-field">
-                <label htmlFor="index">Index:</label>
-                <select
-                  id="index"
-                  name="index"
-                  value={formValues.index}
-                  onChange={handleInputChange}
-                >
-                  <option value="DOW">DOW</option>
-                  <option value="NASDAQ">NASDAQ</option>
-                  <option value="S&P">S&P</option>
-                </select>
-              </div>
-              </div>
+              
+                  <label htmlFor="sector">Sector </label>
+                  
+                  <select
+                    id="sector"
+                    name="sector"
+                    value={formValues.sectot}
+                    onChange={handleInputChange}
+                  >
+                    <option value="Technology">Technology</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Industrials">Industrials</option>
+                    <option value="Financial Services">Financial Services</option>
+                    <option value="Consumer Defensive">Consumer Defensive</option>
+                    <option value="Communication Services">Communication Services</option>
+                    <option value="Industrials">Basic Materials</option>
+                  </select>
 
-              <div className="form-field">
-                <label htmlFor="platform">Platform:</label>
-                <select
-                  id="platform"
-                  name="platform"
-                  value={formValues.platform}
-                  onChange={handleInputChange}
-                >
-                  <option value="Alpaca">Alpaca</option>
-                </select>
-              </div>
-              <div className="form-field">
-                <label htmlFor="riskLevel">Risk Level:</label>
-                <select
-                  id="riskLevel"
-                  name="riskLevel"
-                  value={formValues.riskLevel}
-                  onChange={handleInputChange}
-                >
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
-                </select>
-              </div>
 
-              <div className="form-field">
-                <label htmlFor="user_market_cap">Percentage of Allocation:</label>
-                <input
-                  type="text"
-                  id="perc_alloc"
-                  name="perc_alloc"
-                  value={formValues.user_market_cap}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <button className="profile-button" type="submit">Update Stocks</button>
+                    <label htmlFor="riskLevel">
+                      Risk Level 
+                    </label>
+                    <select
+                      id="riskLevel"
+                      name="riskLevel"
+                      value={formValues.riskLevel}
+                      onChange={handleInputChange}
+                    >
+                      <option value="0">Low</option>
+                      <option value="1">Medium</option>
+                      <option value="2">High</option>
+                    </select>
+                </div>
+                <div className="form-field">
+                  <button className="profile-button" type="submit">Submit</button>
+                </div>
             </div>
           </form>
 
