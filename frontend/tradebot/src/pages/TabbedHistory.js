@@ -62,8 +62,9 @@ const TwoTabsPage = () => {
   };
 
   useEffect(() => {
-    // Fetch all trade activities when component mounts
-    fetchAllTradeActivities();
+    // Fetch all positions and trade activities when component mounts
+    fetchPositionHistory();
+    // fetchAllTradeActivities();
   }, []);
 
   return (

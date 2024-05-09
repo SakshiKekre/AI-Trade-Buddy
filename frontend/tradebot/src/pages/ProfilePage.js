@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
-import { getAllUsers } from '../api/GetUsers';
-import axios from 'axios';
-
+import { getUserData } from '../api/GetUserProfile';
+import { updateUserDetails } from '../api/UpdateUser';
 
 const ProfilePage = () => {
   // Placeholder user data
   const [userData, setUserData] = useState({
+    // user_id: null,
     first_name: null,
-    user_api: null,
-    user_risk_cap: null,
-    user_market_cap: null,
-    username: null,
+    last_name: null,
     email: null,
-
-    // Add more fields as needed
+    phone: null
+    // trading_api_key: null,
+    // trading_api_secret: null
   });
 
   // State for form inputs
@@ -22,8 +20,12 @@ const ProfilePage = () => {
 
   const getUserInfo = async () => {
     try {
-
-      setUserData(getAllUsers);
+      // Call the getUserData function to fetch user info
+      const userDataFromAPI = await getUserData();
+      // Update the state with the retrieved user data
+      setUserData(userDataFromAPI);
+      setFormValues(userDataFromAPI)
+      console.log("formValues during load:", formValues);
     } catch (error) {
       console.error('Error fetching user info:', error);
     }
@@ -34,37 +36,57 @@ const ProfilePage = () => {
     getUserInfo();
   }, []);
 
+  // // Handle form input changes
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormValues({ ...formValues, [name]: value });
+  // };
+
   // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormValues(prevState => ({
+    ...prevState,
+    [name]: value
+  }));
+};
+
+
+  // // Handle form submission
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // Update user data in the backend or perform other actions
+
+  //   try {
+  //     const response = updateUserDetails(formValues);
+  //   } catch (error) {
+  //     console.error('Error submitting user data:', error.message);
+  //   }
+
+  //   console.log('Form submitted with values:', formValues);
+  //   // Optionally update the state to reflect changes
+  //   setUserData(formValues);
+  // };
+
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Update user data in the backend or perform other actions
 
     try {
-      // Make a POST request to the backend API endpoint
-      const response = await axios.post('http://127.0.0.1:5000/user_post', formValues);
-  
-      // Check if the request was successful
-      if (response.status === 200) {
-        console.log('User data submitted successfully:', response.data);
-        // Optionally update the state to reflect changes
-        setUserData(formValues);
-      } else {
-        console.error('Error submitting user data:', response.data.message);
-      }
+      // Convert formValues to JSON format
+      const jsonData = JSON.stringify(formValues);
+
+      // Call the updateUserDetails function with JSON data
+      const response = await updateUserDetails(jsonData);
+      
+      // Optionally update the state or perform other actions based on the response
+      console.log('Response:', response);
     } catch (error) {
       console.error('Error submitting user data:', error.message);
     }
 
-
     console.log('Form submitted with values:', formValues);
-    // Optionally update the state to reflect changes
-    setUserData(formValues);
   };
 
   return (
@@ -75,83 +97,48 @@ const ProfilePage = () => {
 
       <div className="main">
         <div className="profile-container">
-          <h1>User Profile</h1>
           <h2>Identification Information</h2>
           <form onSubmit={handleSubmit} className="profile-info form-container">
             <div className="form-field">
-              <label htmlFor="firstName">First Name:</label>
+              <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
                 id="firstName"
-                name="name"
+                name="first_name"
                 value={formValues.first_name}
                 onChange={handleInputChange}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="user_market_cap">Market Cap:</label>
+              <label htmlFor="lastname">Last Name</label>
               <input
                 type="text"
-                id="user_market_cap"
-                name="user_market_cap"
-                value={formValues.user_market_cap}
+                id="lastname"
+                name="last_name"
+                value={formValues.last_name}
                 onChange={handleInputChange}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
-                name="username"
+                name="email"
                 value={formValues.email}
                 onChange={handleInputChange}
               />
             </div>
             <div className="form-field">
-              <label htmlFor="email">Trading API:</label>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="text"
-                id="tradeAPI"
-                name="user_api"
-                value={formValues.user_api}
+                id="phone"
+                name="phone"
+                value={formValues.phone}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="form-field">
-              <label htmlFor="email">Risk:</label>
-              <input
-                type="text"
-                id="secretKey"
-                name="user_risk_cap"
-                value={formValues.user_risk_cap}
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <br/>
-            {/* <h2>Trade Preferences</h2>
-
-            <div className="form-field">
-              <label htmlFor="riskLevel">Risk Level:</label>
-              <input
-                type="text"
-                id="riskLevel"
-                name="riskLevel"
-                value={formValues.riskLevel}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="marketCap">Market Cap:</label>
-              <input
-                type="select"
-                id="marketCap"
-                name="marketCap"
-                value={formValues.marketCap}
-                onChange={handleInputChange}
-              />
-            </div> */}
             <br/>
             <button className="profile-button" type="submit">Save Changes</button>
           </form>
