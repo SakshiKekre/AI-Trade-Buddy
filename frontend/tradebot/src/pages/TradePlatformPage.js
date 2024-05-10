@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
-import { performTradeAPI } from '../api/PerformTrade.js';
+import { performTradesAPI } from '../api/PerformTradesAPI.js';
 import { updateStocksAPI } from '../api/UpdateStocks.js';
 import { DataGrid } from '@mui/x-data-grid';
 
@@ -28,8 +28,8 @@ const TradePlatformPage = () => {
     { field: 'ticker', headerName: 'Ticker', width: 70 },
     { field: 'company_name', headerName: 'Company Name', width: 200 },
     { field: 'risk_category', headerName: 'Risk', width: 30 },
-    { field: 'predicted_returns', headerName: 'Returns', width: 200 },
-    { field: 'market_cap', headerName: 'Market Cap', width: 200 },
+    { field: 'predicted_returns', headerName: 'Returns', width: 100 },
+    { field: 'market_cap', headerName: 'Market Cap', width: 100 },
     {
       field: 'quantity', 
       headerName: 'Quantity', 
@@ -51,15 +51,6 @@ const TradePlatformPage = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  // Handle checkbox changes for the new field
-  const handleCheckboxChange = (e) => {
-    const { name, checked, value } = e.target;
-    if (checked) {
-      setSelectedStocks([...selectedStocks, value]);
-    } else {
-      setSelectedStocks(selectedStocks.filter(item => item !== value));
-    }
-  };
 
   // Handle quantity input change
   const handleQuantityChange = (e, ticker) => {
@@ -92,21 +83,18 @@ const TradePlatformPage = () => {
   };
 
 
-  // Perform trade with selected stocks
+  // Perform trade with all stocks
   const handlePerformTrade = async (e) => {
     e.preventDefault();
     try {
-      // Get the selected rows from the data grid
-      const selectedRows = stockOptions.filter(row => selectedStocks.includes(row.ticker));
-
       // Prepare data for trade with quantities
-      const tradeData = selectedRows.map(row => ({
-        ...row,
-        quantity: quantityInput[row.ticker] || 0
+      const tradeData = stockOptions.map(row => ({
+        symbol: row.ticker,
+        qty: quantityInput[row.ticker] || 0
       }));
 
-      // Call the perform trade API with selected stocks and quantities
-      const responses = await performTradeAPI(tradeData);
+      // Call the perform trade API with all stocks and quantities
+      const responses = await performTradesAPI(tradeData);
 
       // Log or handle each response individually
       responses.forEach((response, index) => {
@@ -124,17 +112,15 @@ const TradePlatformPage = () => {
   return (
     <div className="background container">
       <div className="sidebar">
-        <Sidebar></Sidebar>
+        <Sidebar/>
       </div>
 
       <div className='main'>
         <div className="profile-container">
           <h1>Stock Recommendations for Investment</h1>
-          <form onSubmit={handleUpdateStocks} className="profile-info form-container">
-            <br/>
-            <h2>Select Sector & Risk Level</h2>
-            <div id="tradePreferences" className='form-container'>
-              <div className="form-field">
+          <form onSubmit={handleUpdateStocks} className="profile-form">
+
+              <div className="form-group">
                 <label htmlFor="sector">Sector </label>
                 <select
                   id="sector"
@@ -151,6 +137,8 @@ const TradePlatformPage = () => {
                   <option value="Communication Services">Communication Services</option>
                   <option value="Industrials">Basic Materials</option>
                 </select>
+              </div>
+              <div className="form-group">
                 <label htmlFor="risk_category">Risk Category</label>
                 <select
                   id="risk_category"
@@ -164,21 +152,19 @@ const TradePlatformPage = () => {
                   <option value="2">High</option>
                 </select>
               </div>
-              <div className="form-field">
                 <button className="profile-button" type="submit">Get Recommendations</button>
-              </div>
-            </div>
+                <p>Stocks with High predicted returns are diplayed below. Please select stocks and quantities to invest in your trade platform</p>
+  
           </form>
 
           <form onSubmit={handlePerformTrade} className="checkbox-list form-container">
-            <h2>Select Stocks for Trade</h2>
             <div className="data-grid-container">
-              <h2>Stock Options</h2>
+             
               <DataGrid
                 rows={stockOptions}
                 columns={columns}
-                checkboxSelection
-                disableSelectionOnClick
+                //checkboxSelection
+                //disableSelectionOnClick
                 getRowId={(row) => row.ticker} // Specify 'ticker' as the unique identifier
               />
             </div>
