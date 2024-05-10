@@ -6,7 +6,7 @@ const Sidebar = () => {
         <div className="sidebar">
             <a href="/" className="logo">
                 {/* Assume a placeholder logo image */}
-                <img src="/trade-buddy-logo1.webp" alt="Trade Buddy Logo"/>
+                <img src="/trade-buddy-logo.webp" alt="Trade Buddy Logo"/>
             </a>
 
             <ul className="side-menu">
