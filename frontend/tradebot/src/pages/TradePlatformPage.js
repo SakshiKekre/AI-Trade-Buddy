@@ -25,9 +25,9 @@ const TradePlatformPage = () => {
   const [quantityInput, setQuantityInput] = useState({});
 
   const columns = [
-    { field: 'ticker', headerName: 'Ticker', width: 70 },
-    { field: 'company_name', headerName: 'Company Name', width: 200 },
-    { field: 'risk_category', headerName: 'Risk', width: 30 },
+    { field: 'ticker', headerName: 'Ticker', width: 100 },
+    { field: 'company_name', headerName: 'Company Name', width: 300 },
+    { field: 'risk_category', headerName: 'Risk', width: 100 },
     { field: 'predicted_returns', headerName: 'Returns', width: 100 },
     { field: 'market_cap', headerName: 'Market Cap', width: 100 },
     {
@@ -37,6 +37,7 @@ const TradePlatformPage = () => {
       renderCell: (params) => (
         <input
           type="number"
+          style={{ width: '70px' }}
           value={quantityInput[params.row.ticker] || ''}
           onChange={(e) => handleQuantityChange(e, params.row.ticker)}
         />
@@ -75,12 +76,34 @@ const TradePlatformPage = () => {
       // Call the update stocks API with formValues
       const response = await updateStocksAPI(formValues);
 
+      // Preprocess the data to convert numeric value to text
+      const processedData = response.map(item => ({
+        ...item,
+        // Convert numericField to textField
+        risk_category: convertToText(item.risk_category),
+        predicted_returns: parseFloat(item.predicted_returns).toFixed(2)
+      }));
       // Update the stockOptions directly with the response data
-      setStockOptions(response);
+      setStockOptions(processedData);
     } catch (error) {
       console.error('Error updating stocks:', error);
     }
   };
+
+  // Function to convert numeric value to text
+  const convertToText = (numericValue) => {
+    // Example conversion logic
+    // You can implement your own logic based on your requirements
+    if (numericValue === 0) {
+      return 'Low';
+    } else if (numericValue === 1) {
+      return 'Medium';
+    } else if (numericValue === 2) {
+      return 'High';
+    } else {
+      return '-';
+    }
+    };
 
 
   // Perform trade with all stocks
@@ -153,9 +176,10 @@ const TradePlatformPage = () => {
                 </select>
               </div>
                 <button className="profile-button" type="submit">Get Recommendations</button>
-                <p>Stocks with High predicted returns are diplayed below. Please select stocks and quantities to invest in your trade platform</p>
-  
           </form>
+
+          <p>Stocks with High predicted returns are diplayed below. Please select stocks and quantities to invest in your trade platform</p>
+  
 
           <form onSubmit={handlePerformTrade} className="checkbox-list form-container">
             <div className="data-grid-container">

@@ -77,7 +77,8 @@ li{
 }
 
 .background {
-  background-image: url("https://cdn2.etrade.net/1/20033018150.0/aempros/content/dam/etrade/retail/en_US/images/what-we-offer/investment-choices/options-call-put.jpg");
+  /* background-image: url("https://cdn2.etrade.net/1/20033018150.0/aempros/content/dam/etrade/retail/en_US/images/what-we-offer/investment-choices/options-call-put.jpg"); */
+  background-image: url("../public/black_gold.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #0056b3;
@@ -254,7 +255,7 @@ li{
   position: absolute; */
   /* max-width: calc(100% - 300px); */
   font-family: 'Arial', sans-serif;
-  width: 800px;
+  width: 900px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f0f0f0;
@@ -317,7 +318,7 @@ li{
 
 .profile-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #090909;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -520,14 +521,14 @@ li{
   font-weight: bold;    /* Make label text bold */
 }
 
-.form-group input select {
+.form-group input, select {
   flex: 1;              /* Take up the remaining space */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 button {
-  background-color: #007bff;
+  background-color: #040404;
   color: white;
   border: none;
   padding: 10px 20px;
