@@ -6,7 +6,7 @@ const PositionHistory = ({ data , accountInfo}) => {
     <div className="trade-history">
       {/* Displaying account information */}
       <div className="account-info">
-      <h3>Account Overview</h3>
+      <h3>Holdings Overview</h3>
       <div className="info-row">
         <span className="label">Total Cash Available for Trading:</span>
         <span className="value">${accountInfo.total_cash}</span>

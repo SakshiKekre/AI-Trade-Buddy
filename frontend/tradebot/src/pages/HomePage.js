@@ -10,12 +10,15 @@ const HomePage = () => {
       </div>
 
       <div class="main">
-        <div className="content-container">
-          <h1>Welcome to our Fintech App!</h1>
-          <p>
+        <div className="home-container">
+          <h1>Managing Trades Made Simple!</h1>
+          <p style={{textAlign: 'center'}}>
             <br/><br/>
-            Fintech app to furnish trading insights...
+            Navigating the financial markets is daunting, with traders facing vast data and rapid shifts. Existing tools often fall short, unable to adapt or predict accurately. 
+            <br/><br/>
+            Meet Trade Buddy, your ally in trading. Powered by advanced algorithms, it revolutionizes trading by analyzing trends and automating tasks. From paper trading to portfolio management, it optimizes risk-reward outcomes and reduces errors. Ready to make smarter financial decisions? Ask Trade Buddy for expert advice today.
           </p>
+
         </div>
       </div>
 
