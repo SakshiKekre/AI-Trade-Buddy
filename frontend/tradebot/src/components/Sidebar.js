@@ -40,6 +40,12 @@ const Sidebar = () => {
                         Rebalance Portfolio 
                     </a>
                 </li>
+                <li>
+                    <a href="/testing">
+                        <i className="bx bxs-hot"></i>
+                        Testing Results
+                    </a>
+                </li>
             </ul>
         </div>
     );

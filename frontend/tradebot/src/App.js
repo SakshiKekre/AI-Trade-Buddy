@@ -6,6 +6,7 @@ import ProfilePage from './pages/ProfilePage';
 import TradePage from './pages/ChatPage';
 import MetricsPage from './pages/TabbedHistory';
 import TradePlatformPage from './pages/TradePlatformPage';
+import TestingResultsPage from "./pages/TestingResultsPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/chat" element={<TradePage />} />
             <Route path="/metrics" element={<MetricsPage />} />
             <Route path="/trade" element={<TradePlatformPage />} />
+            <Route path="/testing" element={<TestingResultsPage/>} />
           </Routes>
         </main>
       </div>
