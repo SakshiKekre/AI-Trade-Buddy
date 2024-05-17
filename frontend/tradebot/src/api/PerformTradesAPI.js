@@ -27,7 +27,7 @@ export const performTradesAPI = async (selectedSymbols) => {
       });
   
       // Return the response data
-      return response.data;
+      return response;
     } catch (error) {
       // Handle any errors that occur during the request
       console.error('Error performing trade:', error);

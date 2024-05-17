@@ -4,6 +4,9 @@ import { performTradesAPI } from '../api/PerformTradesAPI.js';
 import { updateStocksAPI } from '../api/UpdateStocks.js';
 import { DataGrid } from '@mui/x-data-grid';
 
+import '../Styles/notification.css';
+
+
 const TradePlatformPage = () => {
   // Placeholder user data
   const [userData, setUserData] = useState({
@@ -18,12 +21,15 @@ const TradePlatformPage = () => {
   // State for stock options fetched from the updateStocksAPI
   const [stockOptions, setStockOptions] = useState([]);
 
-  // State for selected stock options
-  const [selectedStocks, setSelectedStocks] = useState([]);
+  // // State for selected stock options
+  // const [selectedStocks, setSelectedStocks] = useState([]);
 
   // State for storing the quantity input for each stock
   const [quantityInput, setQuantityInput] = useState({});
 
+  // State for notification
+  const [notification, setNotification] = useState(null);
+  
   const columns = [
     { field: 'ticker', headerName: 'Ticker', width: 100 },
     { field: 'company_name', headerName: 'Company Name', width: 300 },
@@ -106,6 +112,15 @@ const TradePlatformPage = () => {
     };
 
 
+
+  // Function to display notification
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000); // Hide notification after 3 seconds
+  };
+
   // Perform trade with all stocks
   const handlePerformTrade = async (e) => {
     e.preventDefault();
@@ -116,16 +131,26 @@ const TradePlatformPage = () => {
         qty: quantityInput[row.ticker] || 0
       }));
 
-      // Call the perform trade API with all stocks and quantities
-      const responses = await performTradesAPI(tradeData);
+      if (tradeData.length === 0) {
+        console.log('Trade data is empty.');
+        showNotification('No trade submitted. Please choose industry and set stock quantities to perform trade.');
+      }
+      else{
+        // Call the perform trade API with all stocks and quantities
+        const response = await performTradesAPI(tradeData);
 
-      // Log or handle each response individually
-      responses.forEach((response, index) => {
-        console.log(`Trade ${index + 1} performed successfully:`, response);
-      });
-
+        // Check response and show message accordingly
+        
+        if (response.status == 200) {
+          showNotification('Trade performed successfully.');
+          console.log('Trade performed successfully:',response)
+        } else {
+          showNotification('Trade failed. Please try again later.');
+          console.log('Trade failed. Please try again later.');
+        }
+      }
       // Clear selected stocks and quantity input after performing trade
-      setSelectedStocks([]);
+      // setSelectedStocks([]);
       setQuantityInput({});
     } catch (error) {
       console.error('Error performing trade:', error);
@@ -197,6 +222,14 @@ const TradePlatformPage = () => {
           </form>
         </div>
       </div>
+
+      {/* Notification */}
+      {notification && (
+        <div className="notification">
+          <p>{notification}</p>
+        </div>
+      )}
+
     </div>
   );
 };
