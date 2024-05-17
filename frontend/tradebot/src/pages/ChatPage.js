@@ -43,7 +43,7 @@ function ChatPage() {
           {/* <h1>Embedded Chat Page</h1> */}
           <iframe
             title="Chat Page"
-            src="https://6a58096011c646e81b.gradio.live/"
+            src="https://94fc8864b2003a63b4.gradio.live/"
             width="100%"
             height="100%"
             frameBorder="0"
