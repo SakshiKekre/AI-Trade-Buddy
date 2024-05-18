@@ -1,1 +1,7 @@
-# ai_finalproject
+# AI-Driven Trade Bot Solution with Portfolio Management
+
+#### In the ever-evolving fintech landscape, navigating the complexities of financial markets remains a challenge. Traders face numerous hurdles, from identifying lucrative opportunities to constructing diversified portfolios. Factors like market sentiment, technical indicators, fundamental metrics, and industry trends add further layers of complexity. This project tackles these challenges by developing an innovative AI-powered trade bot system designed to excel in paper trading and portfolio management.
+Our system leverages a powerful combination of machine learning and natural language processing to empower users. Machine learning models, including Cluster Analysis and LSTM networks, analyze extensive financial data to assess risk, predict future returns, and categorize stocks for informed investment decisions. Real-time sentiment analysis, extracted from financial news articles processed through Bytewax, provides a more holistic perspective.
+For a truly personalized experience, a real-time financial advisor bot powered by a Falcon LLM fine-tuned using QLoRA interacts with users through natural language conversations. The user-friendly application, built with React.js and Material-UI, empowers users to manage portfolios, visualize market data, and interact with the AI advisor. The secure execution of paper trades powered by a Python back-end with Flask complements this functionality.
+By automating tasks like data analysis, portfolio management, and simulated trade execution, our project equips traders and investors with a powerful tool to enhance their trading strategies and achieve more informed and consistent financial outcomes.
+
